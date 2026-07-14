@@ -429,6 +429,20 @@
       cursor: pointer;
     }
 
+    /* Keep the menu usable on short and notched phone screens. */
+    @media (max-width: 767px) {
+      .mobile-nav-overlay {
+        padding-top: calc(24px + env(safe-area-inset-top, 0px));
+        padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+        overflow-y: auto;
+        overscroll-behavior: contain;
+      }
+      .mobile-nav-overlay a {
+        padding: 12px 0;
+        font-size: clamp(24px, 7vw, 32px);
+      }
+    }
+
     /* Mobile spacing: tighter section paddings */
     @media (max-width: 767px) {
       .py-mobile-tight { padding-top: 56px; padding-bottom: 56px; }
@@ -653,7 +667,7 @@
         </h2>
       </div>
 
-      <div class="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-[24px] border border-ink/8 bg-ink/8 sm:mt-16 md:grid-cols-2 xl:grid-cols-4">
+      <div class="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-[24px] border border-ink/8 bg-ink/8 sm:mt-16 sm:grid-cols-2 xl:grid-cols-4">
         <div class="reveal bg-paper p-5 sm:p-7 md:p-8">
           <div class="font-display text-[28px] font-light italic text-ochre/70 sm:text-[34px]">01</div>
           <div class="mt-3 text-[16px] font-medium tracking-tightish sm:mt-4 sm:text-[18px]">Расфокус</div>
@@ -1476,7 +1490,7 @@
       });
     })();
 
-    // Mobile sticky CTA visibility — show after first scroll past hero, hide when CTA section visible
+    // Mobile sticky CTA visibility — show after the hero and retire before the final CTA/footer.
     (function() {
       var cta = document.getElementById('mobile-sticky-cta');
       var ctaSection = document.getElementById('cta');
@@ -1484,17 +1498,10 @@
       var heroHeight = 0;
       var heroEl = document.getElementById('top');
       if (heroEl) heroHeight = heroEl.offsetHeight;
-      var ctaSectionVisible = false;
-      if (ctaSection && 'IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function(entries) {
-          ctaSectionVisible = entries[0].isIntersecting;
-          updateVisibility();
-        }, { threshold: 0.05 });
-        io.observe(ctaSection);
-      }
       function updateVisibility() {
         var scrolledPastHero = window.scrollY > Math.max(heroHeight - 200, 400);
-        if (scrolledPastHero && !ctaSectionVisible) {
+        var beforeFinalCta = !ctaSection || (window.scrollY + window.innerHeight < ctaSection.offsetTop + 40);
+        if (scrolledPastHero && beforeFinalCta) {
           cta.classList.add('visible');
         } else {
           cta.classList.remove('visible');
