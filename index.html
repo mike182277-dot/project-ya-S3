@@ -1,0 +1,1512 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проект Я — третий сезон · 3–6 сентября 2026</title>
+  <meta name="description" content="Третий сезон авторской программы для предпринимателей и лидеров. 3–6 сентября 2026 года, малая группа в Геленджике, индивидуальная сборка." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0f1418',
+            paper: '#fbf9f4',
+            cream: '#f4efe5',
+            sand: '#e8dfce',
+            stone: '#3b3a35',
+            ochre: '#a16725',
+            gold: '#c89757',
+            pine: '#1d342f',
+            wine: '#5a1f1f'
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 30px 80px -30px rgba(15,20,24,0.18)',
+            edge: '0 1px 0 rgba(15,20,24,0.06), 0 30px 80px -40px rgba(15,20,24,0.16)'
+          },
+          letterSpacing: {
+            tightish: '-0.015em',
+            tighter2: '-0.025em'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+      font-feature-settings: "ss01", "cv11";
+      background: #fbf9f4;
+      color: #0f1418;
+      overflow-x: hidden;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    .font-display {
+      font-family: 'Fraunces', Georgia, serif;
+      font-optical-sizing: auto;
+      font-variation-settings: "SOFT" 50, "WONK" 0;
+    }
+    .font-display-wonk {
+      font-family: 'Fraunces', Georgia, serif;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+    }
+    /* Extra-large typography helper */
+    .display-xl {
+      font-family: 'Fraunces', Georgia, serif;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+      font-weight: 300;
+      letter-spacing: -0.022em;
+      word-spacing: 0.06em;
+      line-height: 0.94;
+    }
+
+    /* Marquee letter — the "Я" graphic */
+    .ya-graphic {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 0.78;
+      letter-spacing: -0.06em;
+    }
+
+    /* Gold accent line */
+    .accent-line {
+      display: inline-block;
+      width: 2.5rem;
+      height: 1px;
+      background: #c89757;
+      vertical-align: middle;
+      margin: 0 0.6rem 0.2rem 0;
+    }
+
+    /* Diagonal divider */
+    .diag-divider {
+      height: 80px;
+      background: linear-gradient(178deg, transparent calc(50% - 1px), rgba(15,20,24,0.08) 50%, transparent calc(50% + 1px));
+    }
+
+    /* Marquee for tags */
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid rgba(15,20,24,0.12);
+      border-radius: 999px;
+      font-size: 11.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(15,20,24,0.7);
+      background: rgba(255,255,255,0.5);
+    }
+    .tag-pill-dark {
+      border-color: rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* Hero stat */
+    .stat-number {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: "opsz" 144;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      line-height: 0.85;
+    }
+
+    /* Subtle paper grain */
+    .grain::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(15,20,24,.05) 0.6px, transparent 0.6px);
+      background-size: 14px 14px;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      opacity: .6;
+    }
+    .grain-light::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.10) 0.6px, transparent 0.6px);
+      background-size: 14px 14px;
+      pointer-events: none;
+      opacity: .35;
+    }
+
+    /* Location section panels use local panorama with different crops */
+    .gel-1 {
+      background-image: linear-gradient(rgba(15,20,24,.20), rgba(15,20,24,.20)), url('https://raw.githubusercontent.com/mike182277-dot/project-ya-2/main/assets/img/gelendzhik-panorama.jpg');
+      background-size: cover;
+      background-position: center 55%;
+    }
+    .gel-2 {
+      background-image: linear-gradient(rgba(15,20,24,.28), rgba(15,20,24,.28)), url('https://raw.githubusercontent.com/mike182277-dot/project-ya-2/main/assets/img/gelendzhik-panorama.jpg');
+      background-size: cover;
+      background-position: center 88%;
+    }
+
+    /* Hero panoramic strip — Gelendzhik horizon at bottom of hero */
+    .hero-strip {
+      position: relative;
+      width: 100%;
+      height: clamp(220px, 30vh, 340px);
+      background-image:
+        linear-gradient(180deg, rgba(244,239,229,0.45) 0%, rgba(244,239,229,0) 18%, rgba(15,20,24,0) 65%, rgba(15,20,24,0.18) 100%),
+        url('https://raw.githubusercontent.com/mike182277-dot/project-ya-2/main/assets/img/gelendzhik-panorama.jpg');
+      background-size: cover;
+      background-position: center 38%;
+      filter: saturate(0.88) contrast(1.02);
+      overflow: hidden;
+    }
+    .hero-strip::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(251,249,244,0.22) 0%, rgba(15,20,24,0) 30%);
+      pointer-events: none;
+    }
+    .hero-strip-caption {
+      position: absolute;
+      right: max(20px, calc((100% - 80rem) / 2 + 20px));
+      bottom: 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(251,249,244,0.78);
+      text-shadow: 0 1px 8px rgba(15,20,24,0.55);
+    }
+
+    /* Speaker photo */
+    .speaker-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center 22%;
+      border-radius: 2px;
+      filter: grayscale(0.12) contrast(1.03);
+      display: block;
+    }
+
+    /* Numbered eyebrow */
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Section number */
+    .sec-num {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-variation-settings: "opsz" 144;
+      color: rgba(15,20,24,0.18);
+      line-height: 0.85;
+    }
+
+    /* Tab-style numbered list */
+    .num-tab {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      border: 1px solid rgba(15,20,24,0.18);
+      font-family: 'Fraunces', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #0f1418;
+      flex-shrink: 0;
+    }
+
+    /* Editorial divider */
+    .div-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(15,20,24,0.18), transparent);
+    }
+
+    /* Reveal-on-scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal.delay-1 { transition-delay: .08s; }
+    .reveal.delay-2 { transition-delay: .16s; }
+    .reveal.delay-3 { transition-delay: .24s; }
+    .reveal.delay-4 { transition-delay: .32s; }
+
+    /* Hero load animation */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .rise { animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .rise-1 { animation-delay: .1s; }
+    .rise-2 { animation-delay: .25s; }
+    .rise-3 { animation-delay: .42s; }
+    .rise-4 { animation-delay: .58s; }
+    .rise-5 { animation-delay: .72s; }
+    .rise-6 { animation-delay: .85s; }
+
+    /* Caret on summary */
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details summary .caret {
+      transition: transform .25s ease;
+      display: inline-block;
+    }
+    details[open] summary .caret { transform: rotate(45deg); }
+
+    /* Big editorial number */
+    .big-num {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: "opsz" 144;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+    }
+
+    /* Sticky nav */
+    .nav-blur {
+      backdrop-filter: saturate(140%) blur(12px);
+      -webkit-backdrop-filter: saturate(140%) blur(12px);
+      background: rgba(251,249,244,0.78);
+    }
+
+    /* Subtle hover for cards */
+    .card-hover {
+      transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 30px 60px -30px rgba(15,20,24,0.16);
+    }
+
+    /* Strikethrough / accent underline */
+    .underline-gold {
+      background-image: linear-gradient(transparent 78%, rgba(200,151,87,0.45) 78%);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      padding: 0 .12em;
+    }
+    .text-balance { text-wrap: balance; }
+    .text-pretty { text-wrap: pretty; }
+
+    /* ===== MOBILE-ONLY ENHANCEMENTS ===== */
+
+    /* Sticky bottom CTA — appears on mobile after scroll */
+    .mobile-sticky-cta {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+      z-index: 35;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: #0f1418;
+      color: #fbf9f4;
+      font-size: 15px;
+      font-weight: 500;
+      box-shadow: 0 12px 32px rgba(15,20,24,0.28), 0 4px 12px rgba(15,20,24,0.18);
+      transform: translateY(120%);
+      transition: transform 0.45s cubic-bezier(0.2,0.7,0.2,1), opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      text-decoration: none;
+    }
+    .mobile-sticky-cta.visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    @media (max-width: 767px) {
+      .mobile-sticky-cta { display: inline-flex; }
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(15,20,24,0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      padding: 24px 24px 40px;
+      transform: translateY(-100%);
+      transition: transform 0.4s cubic-bezier(0.2,0.7,0.2,1);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .mobile-nav-overlay.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-nav-overlay a {
+      color: #fbf9f4;
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: 32px;
+      letter-spacing: -0.015em;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(251,249,244,0.08);
+      text-decoration: none;
+    }
+    .mobile-nav-overlay a:last-of-type { border-bottom: none; }
+    .hamburger-btn {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(15,20,24,0.15);
+      background: transparent;
+      cursor: pointer;
+    }
+    .hamburger-btn span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: #0f1418;
+      position: relative;
+    }
+    .hamburger-btn span::before,
+    .hamburger-btn span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 1.5px;
+      background: #0f1418;
+    }
+    .hamburger-btn span::before { top: -6px; }
+    .hamburger-btn span::after  { top:  6px; }
+    .mobile-nav-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(251,249,244,0.18);
+      background: transparent;
+      color: #fbf9f4;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    /* Mobile spacing: tighter section paddings */
+    @media (max-width: 767px) {
+      .py-mobile-tight { padding-top: 56px; padding-bottom: 56px; }
+    }
+
+    /* Mobile: tame hero strip height */
+    @media (max-width: 767px) {
+      .hero-strip { height: clamp(140px, 22vh, 200px) !important; }
+    }
+
+    /* Mobile: speaker photos become 4:3 horizontal to save vertical space */
+    @media (max-width: 767px) {
+      .speaker-photo {
+        aspect-ratio: 4 / 3;
+        object-position: center 28%;
+      }
+    }
+  
+    /* Season 3 layout hardening: keep every editorial grid inside the viewport. */
+    html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+    .grid > *, [class*="grid-cols"] > * { min-width: 0; }
+    h1, h2, h3, blockquote, p { overflow-wrap: break-word; word-break: normal; }
+    img { max-width: 100%; }
+    @media (max-width: 1100px) {
+      .font-display { letter-spacing: -0.025em; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAV -->
+  <header class="nav-blur sticky top-0 z-40 border-b border-ink/[0.06]">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-3.5 sm:px-8 sm:py-4">
+      <a href="#top" class="flex items-baseline gap-2.5">
+        <span class="font-display text-2xl italic font-medium tracking-tightish text-ink">Я</span>
+        <span class="eyebrow text-ink/55 hidden xs:inline sm:inline">Проект · авторский интенсив</span>
+        <span class="eyebrow text-ink/55 sm:hidden">Проект</span>
+      </a>
+      <nav class="hidden items-center gap-7 text-[14px] text-ink/70 md:flex">
+        <a href="#method" class="hover:text-ink transition">Метод</a>
+        <a href="#team" class="hover:text-ink transition">Мастера</a>
+        <a href="#testimonials" class="hover:text-ink transition">Отзывы</a>
+        <a href="#faq" class="hover:text-ink transition">FAQ</a>
+      </nav>
+      <a href="#cta" class="hidden sm:inline-flex rounded-full border border-ink/15 bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-stone">Установочный созвон</a>
+      <button id="mobile-nav-toggle" type="button" class="hamburger-btn md:hidden" aria-label="Открыть меню" aria-controls="mobile-nav" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <div id="mobile-nav" class="mobile-nav-overlay" aria-hidden="true">
+    <div class="flex items-center justify-between mb-12">
+      <span class="font-display text-3xl italic font-light text-paper">Я</span>
+      <button id="mobile-nav-close" type="button" class="mobile-nav-close" aria-label="Закрыть меню">×</button>
+    </div>
+    <nav class="flex flex-col">
+      <a href="#method" data-mobile-link>Метод</a>
+      <a href="#team" data-mobile-link>Мастера</a>
+      <a href="#testimonials" data-mobile-link>Отзывы первых участников</a>
+      <a href="#faq" data-mobile-link>Частые вопросы</a>
+      <a href="#cta" data-mobile-link>Установочный созвон</a>
+    </nav>
+    <div class="mt-auto pt-8 text-[13px] text-paper/55">
+      Геленджик · 3–6 сентября 2026
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section id="top" class="relative overflow-hidden bg-paper text-ink">
+    <!-- ambient texture layers -->
+    <div class="grain absolute inset-0 opacity-80"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-cream/60 via-paper to-paper"></div>
+
+    <!-- Giant Я graphic -->
+    <div aria-hidden="true" class="pointer-events-none absolute -right-[14%] top-[12%] select-none text-[clamp(220px,68vw,1080px)] ya-graphic text-ochre/[0.08] sm:top-[4%] sm:-right-[6%] sm:text-[clamp(380px,68vw,1080px)] sm:text-ochre/[0.13] lg:top-[-2%]">Я</div>
+    <div aria-hidden="true" class="pointer-events-none absolute right-[6%] top-[14%] hidden h-[2px] w-[180px] bg-ochre/40 md:block"></div>
+
+    <div class="relative mx-auto max-w-7xl px-5 pb-20 pt-12 sm:px-8 sm:pb-28 sm:pt-16 lg:pb-36 lg:pt-24">
+
+      <!-- Top meta row -->
+      <div class="rise rise-1 flex flex-wrap items-center gap-3 text-[12px] tracking-[0.18em] uppercase text-ink/65">
+        <span class="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-paper px-4 py-1.5">
+          <span class="h-1.5 w-1.5 rounded-full bg-ochre"></span>
+          Ближайший поток · 3–6 сентября 2026
+        </span>
+        <span class="hidden sm:inline-block h-px w-10 bg-ink/20"></span>
+        <span class="hidden sm:inline-block">Геленджик · 5 человек · авторский метод</span>
+      </div>
+
+      <!-- Massive headline -->
+      <h1 class="rise rise-2 mt-8 max-w-[18ch] display-xl text-[38px] sm:mt-14 sm:text-[76px] md:text-[96px] lg:text-[116px]">
+        Ваш главный<br/>
+        <span class="font-display-wonk italic text-ochre">Проект</span> в&nbsp;жизни —<br/>
+        <span class="relative inline-block">
+          это вы&nbsp;сами.
+          <span class="absolute -bottom-2 left-1 right-6 h-[3px] bg-gold/55 sm:h-[4px]"></span>
+        </span>
+      </h1>
+
+      <div class="mt-12 grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16">
+        <!-- Left: copy + CTA -->
+        <div>
+          <p class="rise rise-3 max-w-[44ch] text-[18px] leading-[1.7] text-stone sm:text-[20px] sm:leading-[1.65] text-pretty">
+            Авторская программа для предпринимателей и&nbsp;лидеров. Малая группа, четыре дня в&nbsp;Геленджике, индивидуальная сборка под состав.
+          </p>
+          <p class="rise rise-3 mt-5 max-w-[44ch] text-[15.5px] leading-[1.75] text-stone/80 sm:text-[16.5px] sm:leading-[1.7]">
+            Это место, где можно остановиться и&nbsp;посмотреть на&nbsp;собственную жизнь как на&nbsp;проект — увидеть структуру, восстановить ресурс и&nbsp;собрать понятный маршрут на&nbsp;ближайшие годы.
+          </p>
+
+          <div class="rise rise-4 mt-7 inline-flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] text-ink/70">
+            <span class="font-display italic text-ochre">не</span> терапия
+            <span class="text-ink/30">·</span>
+            <span class="font-display italic text-ochre">не</span> инфобиз
+            <span class="text-ink/30">·</span>
+            <span class="font-display italic text-ochre">не</span> корпоративная сессия
+          </div>
+
+          <div class="rise rise-5 mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <a href="#cta" class="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-[15px] font-medium text-paper transition hover:bg-stone sm:w-auto">
+              Установочный созвон
+              <span class="transition group-hover:translate-x-0.5">→</span>
+            </a>
+            <a href="#method" class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink/20 px-7 py-4 text-[15px] font-medium text-ink transition hover:bg-cream sm:w-auto">
+              Как устроен метод
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: stats panel -->
+        <div class="rise rise-6 relative">
+          <div class="absolute -top-4 -left-2 hidden font-display text-[140px] font-light italic leading-none text-ink/[0.04] lg:block">·</div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 divide-y divide-x divide-ink/10 rounded-[20px] border border-ink/10 bg-paper overflow-hidden">
+            <div class="p-5 text-center sm:p-6">
+              <div class="stat-number text-[36px] text-ink sm:text-[52px]">5</div>
+              <div class="mt-2 text-[11px] uppercase tracking-[0.16em] text-stone/70 leading-tight">участников</div>
+            </div>
+            <div class="p-5 text-center sm:p-6">
+              <div class="stat-number text-[36px] text-ink sm:text-[52px]">4</div>
+              <div class="mt-2 text-[11px] uppercase tracking-[0.16em] text-stone/70 leading-tight">дня</div>
+            </div>
+            <div class="p-5 text-center sm:p-6">
+              <div class="stat-number text-[36px] italic text-ochre sm:text-[52px]">3</div>
+              <div class="mt-2 text-[11px] uppercase tracking-[0.16em] text-stone/70 leading-tight">мастера</div>
+            </div>
+            <div class="p-5 text-center sm:p-6">
+              <div class="stat-number text-[36px] text-ink sm:text-[52px]">90<span class="text-[18px] align-top text-ochre sm:text-[20px]">дн</span></div>
+              <div class="mt-2 text-[11px] uppercase tracking-[0.16em] text-stone/70 leading-tight">пост-<br/>сопровождения</div>
+            </div>
+          </div>
+          <div class="mt-4 text-right text-[12px] text-stone/60">
+            4 полных дня программы
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Panoramic Gelendzhik horizon — cinematic bottom strip of hero -->
+    <div class="hero-strip" aria-hidden="true">
+      <div class="hero-strip-caption">Геленджик · Маркотхский хребет</div>
+    </div>
+  </section>
+
+  <!-- INTENT / WHY THIS FORMAT -->
+  <section class="relative grain bg-paper">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-36">
+      <div class="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-20">
+        <div class="reveal">
+          <div class="flex items-center gap-4">
+            <span class="eyebrow text-ochre">Зачем вообще такой формат</span>
+            <span class="div-line w-24"></span>
+          </div>
+          <h2 class="mt-6 font-display text-[34px] font-light leading-[1.04] tracking-tighter2 text-balance sm:text-[44px] md:text-[54px]">
+            Внешние контексты и&nbsp;среда подвижны и&nbsp;непредсказуемы.
+          </h2>
+          <p class="mt-6 font-display text-[20px] font-light leading-[1.35] tracking-tightish text-stone sm:text-[24px] md:text-[28px] text-balance">
+            Единственная константа — это&nbsp;<span class="italic">вы сами</span> и&nbsp;ваше желание жить лучшую жизнь из&nbsp;возможных.
+          </p>
+          <div class="mt-8 space-y-5 text-[16px] leading-8 text-stone sm:text-[17px] sm:leading-9 text-pretty">
+            <p>Мир меняется быстрее, чем наши привычные опоры: бизнес-модели, семейные обстоятельства, работа, роли и&nbsp;даже профессиональные компетенции. Но&nbsp;если вы&nbsp;увидите себя и&nbsp;будете развивать себя как систему&nbsp;— появляется внутренняя ясность, ресурсы и&nbsp;эффективный способ принимать решения не&nbsp;реактивно от&nbsp;внешних обстоятельств, а&nbsp;исходя из&nbsp;ваших целей и&nbsp;задач.</p>
+            <p class="text-ink">Это и&nbsp;есть «Проект&nbsp;Я» — не&nbsp;про то, чтобы стать кем-то другим, а&nbsp;про то, чтобы перестать быть случайной функцией собственной жизни.</p>
+          </div>
+        </div>
+
+        <div class="reveal delay-2 relative">
+          <div class="absolute -top-6 -right-2 hidden font-display text-[180px] font-light italic leading-none text-ink/[0.04] lg:block">Я</div>
+          <div class="relative rounded-[28px] bg-ink p-8 text-paper shadow-soft sm:rounded-[34px] sm:p-10 md:p-12">
+            <div class="eyebrow text-gold">Ключевая идея программы</div>
+            <div class="mt-8 space-y-6 font-display text-[22px] font-light leading-[1.4] tracking-tightish text-paper/92 md:text-[26px] md:leading-[1.4]">
+              <p class="flex gap-4">
+                <span class="flex-shrink-0 text-gold/70 text-[28px] md:text-[32px] leading-none">·</span>
+                <span>Принять факт, что неопределённость будущего — новая норма.</span>
+              </p>
+              <p class="flex gap-4">
+                <span class="flex-shrink-0 text-gold/70 text-[28px] md:text-[32px] leading-none">·</span>
+                <span>Сосредоточиться не&nbsp;на&nbsp;контроле всего мира, а&nbsp;на&nbsp;построении себя как системы с&nbsp;высокой адаптивностью.</span>
+              </p>
+              <p class="flex gap-4">
+                <span class="flex-shrink-0 text-gold/70 text-[28px] md:text-[32px] leading-none">·</span>
+                <span>Собрать личный проект, который помогает жить, выбирать и&nbsp;реализовываться в&nbsp;любых условиях.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="bg-cream">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-32">
+      <div class="reveal max-w-3xl">
+        <div class="flex items-center gap-4">
+          <span class="eyebrow text-ochre">Симптомы</span>
+          <span class="div-line w-24"></span>
+        </div>
+        <h2 class="mt-6 font-display text-[32px] font-light leading-[1.05] tracking-tighter2 text-balance sm:text-[42px] md:text-[52px]">
+          Внешне вы можете иметь всё: статус, результаты, доход, узнаваемость.<br />
+          А&nbsp;внутри — ощущение, что вы&nbsp;не&nbsp;живёте свою жизнь, пребывая в&nbsp;чужих ролях.
+        </h2>
+      </div>
+
+      <div class="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-[24px] border border-ink/8 bg-ink/8 sm:mt-16 md:grid-cols-2 xl:grid-cols-4">
+        <div class="reveal bg-paper p-5 sm:p-7 md:p-8">
+          <div class="font-display text-[28px] font-light italic text-ochre/70 sm:text-[34px]">01</div>
+          <div class="mt-3 text-[16px] font-medium tracking-tightish sm:mt-4 sm:text-[18px]">Расфокус</div>
+          <p class="mt-2 text-[13.5px] leading-[1.55] text-stone/85 sm:mt-3 sm:text-[14.5px] sm:leading-7">Слишком много проектов, направлений и обязательств. Они больше не собираются в целостную картину — каждый день идёт по инерции.</p>
+        </div>
+        <div class="reveal delay-1 bg-paper p-5 sm:p-7 md:p-8">
+          <div class="font-display text-[28px] font-light italic text-ochre/70 sm:text-[34px]">02</div>
+          <div class="mt-3 text-[16px] font-medium tracking-tightish sm:mt-4 sm:text-[18px]">Утечки ресурса</div>
+          <p class="mt-2 text-[13.5px] leading-[1.55] text-stone/85 sm:mt-3 sm:text-[14.5px] sm:leading-7">Делаете привычное, но не различаете, что реально питает, а что — компенсирует внутренний дефицит и выжигает изнутри.</p>
+        </div>
+        <div class="reveal delay-2 bg-paper p-5 sm:p-7 md:p-8">
+          <div class="font-display text-[28px] font-light italic text-ochre/70 sm:text-[34px]">03</div>
+          <div class="mt-3 text-[16px] font-medium tracking-tightish sm:mt-4 sm:text-[18px]">Переизбыток ролей</div>
+          <p class="mt-2 text-[13.5px] leading-[1.55] text-stone/85 sm:mt-3 sm:text-[14.5px] sm:leading-7">Предприниматель, партнёр, родитель, лидер, «опора для всех». А где в этом всём сам человек, давно непонятно.</p>
+        </div>
+        <div class="reveal delay-3 bg-paper p-5 sm:p-7 md:p-8">
+          <div class="font-display text-[28px] font-light italic text-ochre/70 sm:text-[34px]">04</div>
+          <div class="mt-3 text-[16px] font-medium tracking-tightish sm:mt-4 sm:text-[18px]">Планы от тревоги</div>
+          <p class="mt-2 text-[13.5px] leading-[1.55] text-stone/85 sm:mt-3 sm:text-[14.5px] sm:leading-7">Даже сильные люди чаще строят год от страха «не отстать», а не от ясного понимания собственного вектора.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD CORE -->
+  <section id="method" class="relative grain bg-paper">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-36">
+
+      <div class="reveal max-w-4xl">
+        <div class="flex items-center gap-4">
+          <span class="eyebrow text-ochre">Метод</span>
+          <span class="div-line w-24"></span>
+        </div>
+        <h2 class="mt-6 font-display text-[32px] font-light leading-[1.04] tracking-tighter2 text-balance sm:text-[44px] md:text-[56px]">
+          Мы применяем к&nbsp;человеку проектную логику. Без&nbsp;эзотерики и&nbsp;без&nbsp;сухой корпоративной стратегии.
+        </h2>
+        <p class="mt-7 max-w-3xl text-[16px] leading-8 text-stone sm:text-[17px] sm:leading-9">
+          Это не&nbsp;значит превратить себя в&nbsp;KPI. Это значит впервые увидеть себя как систему — с&nbsp;целью, ресурсами, рисками и&nbsp;реальной возможностью выбирать. В&nbsp;основе — ясный метод, проектное мышление, энергоаудит, групповая динамика и&nbsp;личная рефлексия. Метод собран из&nbsp;трёх треков, которые идут параллельно все четыре дня.
+        </p>
+      </div>
+
+      <!-- Three tracks -->
+      <div class="mt-16 grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
+        <div class="reveal card-hover relative overflow-hidden rounded-[26px] border border-ink/10 bg-paper p-7 sm:p-8 md:p-10">
+          <div class="absolute -right-4 -top-2 font-display text-[140px] font-light italic leading-none text-ink/[0.05]">I</div>
+          <div class="relative">
+            <span class="eyebrow text-pine">Трек 01</span>
+            <div class="mt-4 font-display text-[26px] font-light leading-tight tracking-tightish md:text-[30px]">Интеллект<br /><span class="italic text-ochre">Проектная сборка</span></div>
+            <p class="mt-5 text-[15px] leading-7 text-stone/90">Жизнь как проект: суть, цель года, ресурсы, риски, ключевые направления, маршрут. Не на уровне «прокачайся ещё» — на уровне базовых настроек.</p>
+            <div class="mt-7 flex flex-wrap gap-2 text-[12px] uppercase tracking-[0.16em] text-stone/70">
+              <span class="rounded-full border border-ink/12 px-3 py-1.5">P&amp;L жизни</span>
+              <span class="rounded-full border border-ink/12 px-3 py-1.5">Жизненный цикл</span>
+              <span class="rounded-full border border-ink/12 px-3 py-1.5">SPOD → BANI</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal delay-1 card-hover relative overflow-hidden rounded-[26px] border border-ink/10 bg-paper p-7 sm:p-8 md:p-10">
+          <div class="absolute -right-4 -top-2 font-display text-[140px] font-light italic leading-none text-ink/[0.05]">II</div>
+          <div class="relative">
+            <span class="eyebrow text-pine">Трек 02</span>
+            <div class="mt-4 font-display text-[26px] font-light leading-tight tracking-tightish md:text-[30px]">Энергия<br /><span class="italic text-ochre">Бухгалтерия ресурса</span></div>
+            <p class="mt-5 text-[15px] leading-7 text-stone/90">Где ресурс рождается, а где утекает в компенсации. По четырём счетам — физическому, эмоциональному, ментальному и ценностному. И три состояния: подключённость, фрустрация, аддикция.</p>
+            <div class="mt-7 flex flex-wrap gap-2 text-[12px] uppercase tracking-[0.16em] text-stone/70">
+              <span class="rounded-full border border-ink/12 px-3 py-1.5">4 счёта</span>
+              <span class="rounded-full border border-ink/12 px-3 py-1.5">3 состояния</span>
+              <span class="rounded-full border border-ink/12 px-3 py-1.5">Карта компенсаций</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal delay-2 card-hover relative overflow-hidden rounded-[26px] border border-ink/10 bg-paper p-7 sm:p-8 md:p-10">
+          <div class="absolute -right-4 -top-2 font-display text-[140px] font-light italic leading-none text-ink/[0.05]">III</div>
+          <div class="relative">
+            <span class="eyebrow text-pine">Трек 03</span>
+            <div class="mt-4 font-display text-[26px] font-light leading-tight tracking-tightish md:text-[30px]">Лидерство<br /><span class="italic text-ochre">Авторство своей жизни</span></div>
+            <p class="mt-5 text-[15px] leading-7 text-stone/90">Через перезагрузку себя — переход от&nbsp;реактивного поведения к&nbsp;лидерству в&nbsp;собственной жизни. Когда вы&nbsp;понимаете свои цели и&nbsp;задачи и&nbsp;принимаете решения от&nbsp;себя, а&nbsp;не&nbsp;от&nbsp;внешних обстоятельств.</p>
+            <div class="mt-7 flex flex-wrap gap-2 text-[12px] uppercase tracking-[0.16em] text-stone/70">
+              <span class="rounded-full border border-ink/12 px-3 py-1.5">Ротация ролей</span>
+              <span class="rounded-full border border-ink/12 px-3 py-1.5">Run / Change</span>
+              <span class="rounded-full border border-ink/12 px-3 py-1.5">Антихрупкость</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="bg-cream">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-32">
+      <div class="reveal max-w-4xl">
+        <div class="flex items-center gap-4">
+          <span class="eyebrow text-ochre">Кто ведёт</span>
+          <span class="div-line w-24"></span>
+        </div>
+        <h2 class="mt-6 font-display text-[32px] font-light leading-[1.04] tracking-tighter2 text-balance sm:text-[42px] md:text-[52px]">
+          Три мастера, три оптики — собранные в одну сильную работу.
+        </h2>
+        <p class="mt-7 max-w-2xl text-[16px] leading-8 text-stone sm:text-[17px] sm:leading-9">
+          Ни один из этих треков по отдельности не даёт того сдвига, который мы видим. Сила формата — в их сочетании.
+        </p>
+      </div>
+
+      <div class="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-7">
+
+        <!-- Михаил -->
+        <div class="reveal rounded-[24px] bg-paper p-6 shadow-soft sm:rounded-[28px] sm:p-7">
+          <div class="overflow-hidden rounded-[18px]">
+            <img src="https://raw.githubusercontent.com/mike182277-dot/project-ya-2/main/assets/img/mikhail-kachalkin.jpg" alt="Михаил Качалкин" class="speaker-photo" />
+          </div>
+          <div class="mt-6">
+            <span class="eyebrow text-ochre">Рациональный контур</span>
+            <div class="mt-3 font-display text-[24px] font-light tracking-tightish">Михаил Качалкин</div>
+            <div class="mt-1 text-[13px] uppercase tracking-[0.18em] text-stone/65">Стратегическая сборка · фасилитация</div>
+            <p class="mt-5 text-[14.5px] leading-7 text-stone/90">Предприниматель, методолог и фасилитатор. Помогает увидеть себя как систему: выделить суть, цель года, точки роста, риски и маршрут.</p>
+            <p class="mt-3 text-[14.5px] leading-7 text-stone/75">В программе отвечает за проектную логику, сборку личной карты и перевод инсайтов в понятные действия.</p>
+          </div>
+        </div>
+
+        <!-- Олеся -->
+        <div class="reveal delay-1 rounded-[24px] bg-paper p-6 shadow-soft sm:rounded-[28px] sm:p-7">
+          <div class="overflow-hidden rounded-[18px]">
+            <img src="https://raw.githubusercontent.com/mike182277-dot/project-ya-2/main/assets/img/olesya-slavyanskaya.png" alt="Олеся Славянская" class="speaker-photo" />
+          </div>
+          <div class="mt-6">
+            <span class="eyebrow text-ochre">Эмоциональный контур</span>
+            <div class="mt-3 font-display text-[24px] font-light tracking-tightish">Олеся Славянская</div>
+            <div class="mt-1 text-[13px] uppercase tracking-[0.18em] text-stone/65">Состояние · телесные практики</div>
+            <p class="mt-5 text-[14.5px] leading-7 text-stone/90">Эксперт по энергоменеджменту, эмоциональному интеллекту и телесным практикам. Помогает увидеть реальные источники энергии, дефициты и способы вернуть живость и устойчивость.</p>
+            <p class="mt-3 text-[14.5px] leading-7 text-stone/75">В программе отвечает за работу с состоянием, телом, проживанием и мягкую внутреннюю перестройку.</p>
+          </div>
+        </div>
+
+        <!-- Евгений -->
+        <div class="reveal delay-2 rounded-[24px] bg-paper p-6 shadow-soft sm:rounded-[28px] sm:p-7">
+          <div class="overflow-hidden rounded-[18px]">
+            <img src="https://raw.githubusercontent.com/mike182277-dot/project-ya-2/main/assets/img/evgeny-slavyansky.jpg" alt="Евгений Славянский" class="speaker-photo" />
+          </div>
+          <div class="mt-6">
+            <span class="eyebrow text-ochre">Контур среды</span>
+            <div class="mt-3 font-display text-[24px] font-light tracking-tightish">Евгений Славянский</div>
+            <div class="mt-1 text-[13px] uppercase tracking-[0.18em] text-stone/65">Пространство · ритм · логистика</div>
+            <p class="mt-5 text-[14.5px] leading-7 text-stone/90">Держит физическую среду программы: дом, ритм дня, выезды и переходы. То, что обычно остаётся невидимым — и что критично для качества погружения.</p>
+            <p class="mt-3 text-[14.5px] leading-7 text-stone/75">В программе отвечает за то, чтобы пространство работало на участников, а не наоборот.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="bg-paper">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-32">
+      <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
+        <div class="reveal">
+          <div class="flex items-center gap-4">
+            <span class="eyebrow text-ochre">Локация</span>
+            <span class="div-line w-24"></span>
+          </div>
+          <h2 class="mt-6 font-display text-[32px] font-light leading-[1.04] tracking-tighter2 text-balance sm:text-[42px] md:text-[50px]">
+            Геленджик и его окрестности — не фон, а часть метода.
+          </h2>
+          <div class="mt-8 space-y-5 text-[16px] leading-8 text-stone sm:text-[17px] sm:leading-9 text-pretty">
+            <p>Море, рельеф, смена пространства, выездные точки, дистанция от обычной городской скорости — всё это помогает выйти из автоматических сценариев и настроиться на более честную работу с собой.</p>
+            <p>Здесь важны не только комфорт и эстетика. Важна среда, в которой человек может остановиться, увидеть себя шире привычного контекста и буквально сменить внутренний горизонт.</p>
+          </div>
+          <div class="mt-8 inline-flex items-center gap-3 rounded-full border border-ink/12 bg-cream px-5 py-3 text-[14px] text-stone">
+            <span class="h-1.5 w-1.5 rounded-full bg-ochre"></span>
+            Частный дом, не ретрит-центр. Это намеренно.
+          </div>
+        </div>
+
+        <div class="reveal delay-2 grid gap-4 sm:gap-5 md:grid-cols-2">
+          <div class="gel-1 relative min-h-[280px] overflow-hidden rounded-[22px] p-5 text-paper sm:min-h-[340px] sm:rounded-[28px] sm:p-7">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/20 to-transparent"></div>
+            <div class="relative flex h-full flex-col justify-end">
+              <div class="eyebrow text-paper/75">Геленджикская бухта</div>
+              <div class="mt-2 max-w-[18rem] font-display text-[20px] font-light leading-tight tracking-tightish sm:text-[22px] md:text-[26px]">Пространство, в котором проще замедлиться и увидеть целое</div>
+            </div>
+          </div>
+          <div class="gel-2 relative min-h-[280px] overflow-hidden rounded-[22px] p-5 text-paper sm:min-h-[340px] sm:rounded-[28px] sm:p-7 md:mt-10">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/20 to-transparent"></div>
+            <div class="relative flex h-full flex-col justify-end">
+              <div class="eyebrow text-paper/75">Маркотхский хребет</div>
+              <div class="mt-2 max-w-[18rem] font-display text-[20px] font-light leading-tight tracking-tightish sm:text-[22px] md:text-[26px]">Высота, движение и другой масштаб восприятия</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIT / NOT FIT -->
+  <section class="bg-cream">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-32">
+      <div class="reveal max-w-3xl">
+        <div class="flex items-center gap-4">
+          <span class="eyebrow text-ochre">Кому подходит</span>
+          <span class="div-line w-24"></span>
+        </div>
+        <h2 class="mt-6 font-display text-[32px] font-light leading-[1.04] tracking-tighter2 text-balance sm:text-[40px] md:text-[50px]">
+          Кому подходит этот формат, а&nbsp;кому стоит выбрать что-то другое.
+        </h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-2 lg:gap-7">
+        <div class="reveal rounded-[24px] bg-paper p-7 shadow-soft sm:rounded-[28px] sm:p-9">
+          <div class="flex items-center gap-3">
+            <span class="inline-block h-2 w-2 rounded-full bg-pine"></span>
+            <span class="eyebrow text-pine">Подходит</span>
+          </div>
+          <ul class="mt-7 space-y-5">
+            <li class="flex gap-4 text-[15px] leading-7 text-stone">
+              <span class="mt-2 inline-block h-1 w-1 flex-shrink-0 rounded-full bg-ink/40"></span>
+              <span>У вас уже есть результат, статус и ответственность за людей или большой проект.</span>
+            </li>
+            <li class="flex gap-4 text-[15px] leading-7 text-stone">
+              <span class="mt-2 inline-block h-1 w-1 flex-shrink-0 rounded-full bg-ink/40"></span>
+              <span>Вы хотите вернуть управление собой, а не «прокачаться ещё сильнее».</span>
+            </li>
+            <li class="flex gap-4 text-[15px] leading-7 text-stone">
+              <span class="mt-2 inline-block h-1 w-1 flex-shrink-0 rounded-full bg-ink/40"></span>
+              <span>Готовы работать честно, в малой группе, без статусов и привычных ролей.</span>
+            </li>
+            <li class="flex gap-4 text-[15px] leading-7 text-stone">
+              <span class="mt-2 inline-block h-1 w-1 flex-shrink-0 rounded-full bg-ink/40"></span>
+              <span>Можете выделить четыре дня без рабочих окон и звонков.</span>
+            </li>
+            <li class="flex gap-4 text-[15px] leading-7 text-stone">
+              <span class="mt-2 inline-block h-1 w-1 flex-shrink-0 rounded-full bg-ink/40"></span>
+              <span>Понимаете, что 4&nbsp;дня — это запуск, а&nbsp;не&nbsp;финиш. Реальное движение происходит в&nbsp;7-, 30- и&nbsp;90-дневных точках после программы.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reveal delay-2 rounded-[24px] bg-ink p-7 text-paper shadow-soft sm:rounded-[28px] sm:p-9">
+          <div class="flex items-center gap-3">
+            <span class="inline-block h-2 w-2 rounded-full bg-wine/80"></span>
+            <span class="eyebrow text-paper/65">Не подходит</span>
+          </div>
+          <ul class="mt-7 space-y-5">
+            <li class="flex gap-4 text-[15px] leading-7 text-paper/82">
+              <span class="mt-2 inline-block h-1 w-1 flex-shrink-0 rounded-full bg-paper/40"></span>
+              <span>Вам нужна терапия острого состояния. Это не клинический формат.</span>
+            </li>
+            <li class="flex gap-4 text-[15px] leading-7 text-paper/82">
+              <span class="mt-2 inline-block h-1 w-1 flex-shrink-0 rounded-full bg-paper/40"></span>
+              <span>Вы ищете быстрый результат за выходные без личного включения.</span>
+            </li>
+            <li class="flex gap-4 text-[15px] leading-7 text-paper/82">
+              <span class="mt-2 inline-block h-1 w-1 flex-shrink-0 rounded-full bg-paper/40"></span>
+              <span>Не готовы получать прямую обратную связь и проживать дискомфорт.</span>
+            </li>
+            <li class="flex gap-4 text-[15px] leading-7 text-paper/82">
+              <span class="mt-2 inline-block h-1 w-1 flex-shrink-0 rounded-full bg-paper/40"></span>
+              <span>Хотите wellness-отдых, ретрит «расслабиться» или отвлечение от работы.</span>
+            </li>
+            <li class="flex gap-4 text-[15px] leading-7 text-paper/82">
+              <span class="mt-2 inline-block h-1 w-1 flex-shrink-0 rounded-full bg-paper/40"></span>
+              <span>Сейчас не готовы вкладываться в собственную пересборку. Это нормально — и в этой точке формат не сработает.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="reveal mt-12 max-w-3xl mx-auto text-center font-display text-[19px] font-light italic leading-[1.5] tracking-tightish text-stone sm:mt-14 sm:text-[22px]">
+        Мы не&nbsp;обещаем волшебное исцеление за&nbsp;4&nbsp;дня&nbsp;— мы&nbsp;создаём сильный сдвиг и&nbsp;инструменты для продолжения.
+      </p>
+    </div>
+  </section>
+
+  <!-- RULES OF SPACE — safety & format promise -->
+  <section id="rules" class="relative overflow-hidden bg-pine text-paper">
+    <div aria-hidden="true" class="pointer-events-none absolute -left-[6%] top-[-6%] select-none ya-graphic text-[clamp(280px,42vw,560px)] text-paper/[0.045]">·</div>
+    <div class="grain-light absolute inset-0"></div>
+
+    <div class="relative mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-32">
+
+      <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end lg:gap-14">
+        <div class="reveal">
+          <div class="flex items-center gap-4">
+            <span class="eyebrow text-gold">Правила пространства</span>
+            <span class="h-px w-24 bg-gold/40"></span>
+          </div>
+          <h2 class="mt-6 font-display text-[30px] font-light leading-[1.05] tracking-tighter2 text-balance sm:text-[42px] md:text-[52px]">
+            Мы вместе создаём особое пространство для работы.
+          </h2>
+        </div>
+        <p class="reveal delay-2 max-w-xl text-[15.5px] leading-[1.8] text-paper/75 sm:text-[16.5px] sm:leading-[1.85]">
+          Глубокая работа возможна только в&nbsp;по-настоящему безопасной среде — и&nbsp;продолжается только тогда, когда у&nbsp;неё есть продолжение в&nbsp;реальной жизни. Четыре опоры, без которых формат не&nbsp;собирается.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-4 sm:mt-16 sm:gap-5 sm:grid-cols-2">
+
+        <div class="reveal rounded-[22px] border border-paper/10 bg-paper/[0.03] p-6 backdrop-blur-sm sm:p-8">
+          <div class="flex items-baseline gap-3">
+            <span class="font-display text-[36px] font-light italic text-gold/80 leading-none">01</span>
+            <span class="eyebrow text-gold/85">Конфиденциальность</span>
+          </div>
+          <div class="mt-4 font-display text-[22px] font-light leading-[1.2] tracking-tightish sm:text-[26px]">
+            Все участники подписывают NDA
+          </div>
+          <p class="mt-4 text-[14.5px] leading-7 text-paper/72">Что говорят и&nbsp;что узнают друг о&nbsp;друге, остаётся внутри. Без исключений и&nbsp;без &laquo;а&nbsp;этим можно поделиться&raquo;.</p>
+        </div>
+
+        <div class="reveal delay-1 rounded-[22px] border border-paper/10 bg-paper/[0.03] p-6 backdrop-blur-sm sm:p-8">
+          <div class="flex items-baseline gap-3">
+            <span class="font-display text-[36px] font-light italic text-gold/80 leading-none">02</span>
+            <span class="eyebrow text-gold/85">Цифровой детокс</span>
+          </div>
+          <div class="mt-4 font-display text-[22px] font-light leading-[1.2] tracking-tightish sm:text-[26px]">
+            Без телефонов и&nbsp;ноутбуков
+          </div>
+          <p class="mt-4 text-[14.5px] leading-7 text-paper/72">Устройства сдаются на&nbsp;старте, заместители по&nbsp;вашим делам предупреждены заранее. Возврат — на&nbsp;утро дня&nbsp;выхода, в&nbsp;парке.</p>
+        </div>
+
+        <div class="reveal delay-2 rounded-[22px] border border-paper/10 bg-paper/[0.03] p-6 backdrop-blur-sm sm:p-8">
+          <div class="flex items-baseline gap-3">
+            <span class="font-display text-[36px] font-light italic text-gold/80 leading-none">03</span>
+            <span class="eyebrow text-gold/85">Социальная дистанция</span>
+          </div>
+          <div class="mt-4 font-display text-[22px] font-light leading-[1.2] tracking-tightish sm:text-[26px]">
+            Никакого нетворкинга
+          </div>
+          <p class="mt-4 text-[14.5px] leading-7 text-paper/72">Не&nbsp;обмениваемся статусами, должностями и&nbsp;контактами. Каждый работает только над своим проектом — и&nbsp;только в&nbsp;этом помогает остальным.</p>
+        </div>
+
+        <div class="reveal delay-3 rounded-[22px] border border-gold/25 bg-paper/[0.04] p-6 backdrop-blur-sm sm:p-8 relative overflow-hidden">
+          <div aria-hidden="true" class="absolute -right-3 -bottom-3 font-display text-[110px] font-light italic leading-none text-gold/[0.08]">·</div>
+          <div class="relative">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-[36px] font-light italic text-gold/80 leading-none">04</span>
+              <span class="eyebrow text-gold/85">ИИ-технология</span>
+            </div>
+            <div class="mt-4 font-display text-[22px] font-light leading-[1.2] tracking-tightish sm:text-[26px]">
+              Персональный ИИ-консультант
+            </div>
+            <p class="mt-4 text-[14.5px] leading-7 text-paper/72">В&nbsp;процессе программы вы&nbsp;создаёте для себя персонального ИИ-консультанта, который будет помогать удерживать ваш фокус в&nbsp;реальной жизни после программы.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OUTCOMES / WHAT YOU TAKE WITH YOU -->
+  <section id="outcomes" class="relative overflow-hidden bg-ink text-paper">
+    <div aria-hidden="true" class="pointer-events-none absolute -right-[8%] top-[10%] select-none ya-graphic text-[clamp(220px,42vw,560px)] text-gold/[0.07]">·</div>
+    <div class="grain-light absolute inset-0"></div>
+
+    <div class="relative mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-36">
+
+      <div class="reveal max-w-4xl">
+        <div class="flex items-center gap-4">
+          <span class="eyebrow text-gold">Результат программы</span>
+          <span class="h-px w-24 bg-gold/40"></span>
+        </div>
+        <h2 class="mt-6 font-display text-[32px] font-light leading-[1.04] tracking-tighter2 text-balance sm:text-[42px] md:text-[54px]">
+          Что вы заберёте с&nbsp;собой.
+        </h2>
+        <p class="mt-7 max-w-2xl text-[15.5px] leading-8 text-paper/72 sm:text-[16.5px] sm:leading-9">
+          Не&nbsp;ощущения «было хорошо», а&nbsp;конкретные опоры, с&nbsp;которыми вы&nbsp;возвращаетесь в&nbsp;обычную жизнь.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-px overflow-hidden rounded-[24px] bg-paper/15 sm:mt-16 md:grid-cols-2">
+
+        <div class="reveal bg-ink p-7 sm:p-9 md:p-10">
+          <div class="flex items-baseline gap-4">
+            <span class="big-num text-[44px] text-gold sm:text-[56px]">01</span>
+            <span class="eyebrow text-paper/55">Карта проекта</span>
+          </div>
+          <div class="mt-4 font-display text-[22px] font-light leading-[1.2] tracking-tightish sm:text-[26px]">
+            Понимание, куда вы&nbsp;идёте и&nbsp;зачем
+          </div>
+          <p class="mt-4 text-[14.5px] leading-7 text-paper/72">Цели на&nbsp;ближайший год и&nbsp;три, ключевые направления, ресурсы и&nbsp;риски. Личный документ, к&nbsp;которому возвращаетесь в&nbsp;точках выбора.</p>
+        </div>
+
+        <div class="reveal delay-1 bg-ink p-7 sm:p-9 md:p-10">
+          <div class="flex items-baseline gap-4">
+            <span class="big-num text-[44px] text-gold sm:text-[56px]">02</span>
+            <span class="eyebrow text-paper/55">Карта энергии</span>
+          </div>
+          <div class="mt-4 font-display text-[22px] font-light leading-[1.2] tracking-tightish sm:text-[26px]">
+            Что вас усиливает, что выжигает
+          </div>
+          <p class="mt-4 text-[14.5px] leading-7 text-paper/72">Картина собственного ресурса в&nbsp;четырёх измерениях. Понимание, что питает по-настоящему, а&nbsp;что лишь компенсирует дефицит.</p>
+        </div>
+
+        <div class="reveal delay-2 bg-ink p-7 sm:p-9 md:p-10">
+          <div class="flex items-baseline gap-4">
+            <span class="big-num text-[44px] text-gold sm:text-[56px]">03</span>
+            <span class="eyebrow text-paper/55">Зеркало лидерства</span>
+          </div>
+          <div class="mt-4 font-display text-[22px] font-light leading-[1.2] tracking-tightish sm:text-[26px]">
+            Каким лидером вас видят рядом
+          </div>
+          <p class="mt-4 text-[14.5px] leading-7 text-paper/72">Как вы&nbsp;принимаете решения, влияете на&nbsp;других и&nbsp;где ваши слепые зоны. Не&nbsp;по&nbsp;опросникам, а&nbsp;по&nbsp;живому отражению группы и&nbsp;мастеров.</p>
+        </div>
+
+        <div class="reveal delay-3 bg-ink p-7 sm:p-9 md:p-10">
+          <div class="flex items-baseline gap-4">
+            <span class="big-num text-[44px] text-gold sm:text-[56px]">04</span>
+            <span class="eyebrow text-paper/55">Внутренний ресурс</span>
+          </div>
+          <div class="mt-4 font-display text-[22px] font-light leading-[1.2] tracking-tightish sm:text-[26px]">
+            То, что будет двигать&nbsp;вас изнутри
+          </div>
+          <p class="mt-4 text-[14.5px] leading-7 text-paper/72">Не&nbsp;только цели, которые надо удерживать волей, а&nbsp;состояние и&nbsp;внутренний двигатель, из&nbsp;которого решения принимаются естественно.</p>
+        </div>
+
+        <div class="reveal bg-ink p-7 sm:p-9 md:p-10">
+          <div class="flex items-baseline gap-4">
+            <span class="big-num text-[44px] text-gold sm:text-[56px]">05</span>
+            <span class="eyebrow text-paper/55">Маршрут на&nbsp;30 дней</span>
+          </div>
+          <div class="mt-4 font-display text-[22px] font-light leading-[1.2] tracking-tightish sm:text-[26px]">
+            Чтобы сдвиг не&nbsp;остался опытом
+          </div>
+          <p class="mt-4 text-[14.5px] leading-7 text-paper/72">Конкретные шаги первого месяца после программы. Чтобы трансформация перешла из&nbsp;интенсива в&nbsp;живую жизнь.</p>
+        </div>
+
+        <div class="reveal delay-1 bg-ink p-7 sm:p-9 md:p-10 relative overflow-hidden">
+          <div aria-hidden="true" class="absolute -right-3 -bottom-3 font-display text-[100px] font-light italic leading-none text-gold/[0.08]">·</div>
+          <div class="relative">
+            <div class="flex items-baseline gap-4">
+              <span class="big-num text-[44px] text-gold sm:text-[56px]">06</span>
+              <span class="eyebrow text-paper/55">Персональный ИИ-консультант</span>
+            </div>
+            <div class="mt-4 font-display text-[22px] font-light leading-[1.2] tracking-tightish sm:text-[26px]">
+              Ваш собственный цифровой консультант
+            </div>
+            <p class="mt-4 text-[14.5px] leading-7 text-paper/72">В&nbsp;программе вы&nbsp;создаёте для себя ИИ-консультанта, обученного на&nbsp;вашей собственной работе. Он&nbsp;знает ваш контекст, помнит, как вы&nbsp;рассуждали в&nbsp;сильной точке программы, и&nbsp;помогает удерживать ваш фокус в&nbsp;реальной жизни.</p>
+            <p class="mt-3 text-[13px] leading-6 text-paper/55">Доступ — после программы, в&nbsp;той LLM, которой вы&nbsp;пользуетесь.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AFTER THE PROGRAM -->
+  <section class="bg-paper">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-32">
+      <div class="reveal max-w-3xl">
+        <div class="flex items-center gap-4">
+          <span class="eyebrow text-ochre">Сопровождение</span>
+          <span class="div-line w-24"></span>
+        </div>
+        <h2 class="mt-6 font-display text-[32px] font-light leading-[1.04] tracking-tighter2 text-balance sm:text-[40px] md:text-[50px]">
+          Что происходит, когда вы возвращаетесь домой.
+        </h2>
+        <p class="mt-7 text-[16px] leading-8 text-stone sm:text-[17px] sm:leading-9">
+          Самая опасная зона — первые 48 часов после программы и первый месяц после неё. Это часть метода, а не дополнительная опция: с первого дня закладываются три точки возврата.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        <div class="reveal rounded-[24px] border border-ink/10 bg-cream p-7 sm:p-8">
+          <div class="flex items-baseline gap-3">
+            <span class="big-num text-[56px] text-ochre">7</span>
+            <span class="eyebrow text-stone/70">дней</span>
+          </div>
+          <div class="mt-3 font-display text-[20px] font-light tracking-tightish">Точка интеграции</div>
+          <p class="mt-3 text-[14px] leading-[1.65] text-stone/90">Первый созвон в&nbsp;группе. Что осело, что начало размываться, что важно зафиксировать сейчас, пока опыт ещё горячий.</p>
+        </div>
+        <div class="reveal delay-1 rounded-[24px] border border-ink/10 bg-cream p-7 sm:p-8">
+          <div class="flex items-baseline gap-3">
+            <span class="big-num text-[56px] text-ochre">30</span>
+            <span class="eyebrow text-stone/70">дней</span>
+          </div>
+          <div class="mt-3 font-display text-[20px] font-light tracking-tightish">Точка реальности</div>
+          <p class="mt-3 text-[14px] leading-[1.65] text-stone/90">Месяц спустя. Что выдержало возвращение в&nbsp;обычную жизнь, а&nbsp;что осыпалось. Где нужна пересборка.</p>
+        </div>
+        <div class="reveal delay-2 rounded-[24px] border border-ink/10 bg-cream p-7 sm:p-8">
+          <div class="flex items-baseline gap-3">
+            <span class="big-num text-[56px] text-ochre">90</span>
+            <span class="eyebrow text-stone/70">дней</span>
+          </div>
+          <div class="mt-3 font-display text-[20px] font-light tracking-tightish">Точка результата</div>
+          <p class="mt-3 text-[14px] leading-[1.65] text-stone/90">Куда дошли. Где поменялась структура решений и&nbsp;привычек. Что проявилось как новый узор. И&nbsp;что выбираем дальше.</p>
+        </div>
+        <div class="reveal delay-3 rounded-[24px] border border-ochre/30 bg-ink p-7 text-paper sm:p-8 relative overflow-hidden">
+          <div aria-hidden="true" class="absolute -right-3 -top-3 font-display text-[80px] font-light italic leading-none text-gold/[0.10]">·</div>
+          <div class="relative">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-[40px] font-light italic text-gold leading-none">∞</span>
+              <span class="eyebrow text-paper/55">всегда</span>
+            </div>
+            <div class="mt-3 font-display text-[20px] font-light tracking-tightish text-paper">Между точками возврата</div>
+            <p class="mt-3 text-[14px] leading-[1.65] text-paper/72">Ваш ИИ-консультант доступен в&nbsp;любой момент: вспомнить контекст программы, проверить решение, вернуться к&nbsp;собственной формулировке. Не&nbsp;заменяет созвоны — продлевает их&nbsp;эффект между ними.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal mt-10 max-w-3xl rounded-[20px] border-l-2 border-ochre bg-cream/50 p-6 text-[15px] leading-7 text-stone sm:p-7">
+        Это не «вернёмся к этой теме когда-нибудь, если будет повод». Даты созвонов закладываются в календарь сразу после программы. Без этого сдвиг четырёх дней с большой вероятностью растворится в обычной скорости жизни.
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO SEASONS COMPLETED -->
+  <section class="relative overflow-hidden bg-paper">
+    <div class="mx-auto max-w-3xl px-5 py-14 text-center sm:px-8 sm:py-24 lg:py-28">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.22em] text-ochre">
+          <span class="h-px w-10 bg-ochre/50"></span>
+          Метод проверен
+          <span class="h-px w-10 bg-ochre/50"></span>
+        </div>
+        <h2 class="mt-7 font-display text-[28px] font-light leading-[1.1] tracking-tighter2 text-balance sm:text-[36px] md:text-[44px]">
+          Два сезона прошли в&nbsp;Геленджике — в&nbsp;апреле и&nbsp;июне 2026 года.
+        </h2>
+        <p class="mt-7 text-[15.5px] leading-8 text-stone sm:text-[16.5px] sm:leading-9">
+          Метод дважды прошёл проверку живой группой и&nbsp;был уточнён в&nbsp;деталях, которые проявляются только в&nbsp;реальной работе. Третий сезон продолжает эту линию — сохраняя архитектуру второго и&nbsp;усиливая то, что показали участники.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="relative overflow-hidden bg-paper">
+    <!-- Decorative big quote mark -->
+    <div aria-hidden="true" class="pointer-events-none absolute -top-8 left-[3%] select-none font-display text-[140px] font-light italic leading-none text-ochre/[0.07] sm:text-[clamp(280px,38vw,520px)]">“</div>
+    <div aria-hidden="true" class="pointer-events-none absolute right-[4%] bottom-[4%] hidden select-none font-display text-[280px] font-light italic leading-none text-ochre/[0.05] lg:block">”</div>
+
+    <div class="relative mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-36">
+
+      <div class="reveal max-w-4xl">
+        <div class="flex items-center gap-4">
+          <span class="eyebrow text-ochre">Голоса первых участников</span>
+          <span class="div-line w-24"></span>
+        </div>
+        <h2 class="mt-6 font-display text-[32px] font-light leading-[1.04] tracking-tighter2 text-balance sm:text-[42px] md:text-[54px]">
+          Что говорят те, кто уже прошёл программу.
+        </h2>
+        <p class="mt-7 max-w-2xl text-[15.5px] leading-8 text-stone sm:text-[16.5px] sm:leading-9">
+          Фрагменты видеоинтервью с&nbsp;участниками первого потока, завершившегося в&nbsp;апреле 2026&nbsp;года. Приводятся с&nbsp;согласия участников.
+        </p>
+      </div>
+
+      <!-- Asymmetric editorial grid: 5 testimonials -->
+      <div class="mt-14 grid gap-5 sm:gap-6 lg:grid-cols-12 lg:gap-7">
+
+        <!-- 1 — Большая, акцентная -->
+        <figure class="reveal group relative overflow-hidden rounded-[28px] bg-ink p-8 text-paper shadow-soft sm:p-10 md:p-12 lg:col-span-7 lg:row-span-2">
+          <div aria-hidden="true" class="absolute -top-6 left-6 select-none font-display text-[120px] font-light italic leading-none text-gold/30 sm:text-[180px] md:text-[220px]">“</div>
+          <blockquote class="relative mt-12 font-display text-[24px] font-light leading-[1.32] tracking-tightish text-paper sm:mt-16 sm:text-[30px] md:text-[36px]">
+            Эти дни не&nbsp;просто трансформировали — они дали глубинное понимание себя. Как будто мне правда дали инструкцию к&nbsp;жизни и&nbsp;к&nbsp;самой&nbsp;себе.
+          </blockquote>
+          <figcaption class="relative mt-10 flex items-center gap-4">
+            <span class="h-px w-10 bg-gold/60"></span>
+            <div class="text-[13px] uppercase tracking-[0.18em] text-paper/65">
+              <div>Участница первого потока</div>
+              <div class="mt-1 text-paper/45 normal-case tracking-normal text-[12px]">Видеоинтервью · апрель 2026</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- 2 — Высокая правая -->
+        <figure class="reveal delay-1 group relative overflow-hidden rounded-[24px] border border-ink/10 bg-cream p-7 sm:p-8 lg:col-span-5">
+          <div aria-hidden="true" class="absolute -top-2 left-5 select-none font-display text-[80px] font-light italic leading-none text-ochre/40">“</div>
+          <blockquote class="relative mt-7 text-[16.5px] leading-[1.65] text-stone sm:text-[17.5px] sm:leading-[1.7]">
+            Это программа, которая открыла новые горизонты. Она прекрасно совмещает две составляющие: духовную — и&nbsp;бизнес-программу, которая рассматривает тебя как систему, способную достигать своих целей.
+          </blockquote>
+          <figcaption class="relative mt-6 flex items-center gap-4">
+            <span class="h-px w-8 bg-ochre/60"></span>
+            <div class="text-[12px] uppercase tracking-[0.18em] text-stone/65">
+              <div>Участник первого потока</div>
+              <div class="mt-1 text-stone/45 normal-case tracking-normal text-[11.5px]">Предприниматель</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- 3 — Средняя правая -->
+        <figure class="reveal delay-2 group relative overflow-hidden rounded-[24px] border border-ink/10 bg-cream p-7 sm:p-8 lg:col-span-5">
+          <div aria-hidden="true" class="absolute -top-2 left-5 select-none font-display text-[80px] font-light italic leading-none text-ochre/40">“</div>
+          <blockquote class="relative mt-7 text-[16.5px] leading-[1.65] text-stone sm:text-[17.5px] sm:leading-[1.7]">
+            Абсолютно безопасное пространство, в&nbsp;котором дают инструменты, чтобы ты&nbsp;пересобрал себя сам. Так, как нужно именно тебе. Никто не&nbsp;навязывает, не&nbsp;лечит, не&nbsp;даёт советов — всё через личный опыт и&nbsp;проживание.
+          </blockquote>
+          <figcaption class="relative mt-6 flex items-center gap-4">
+            <span class="h-px w-8 bg-ochre/60"></span>
+            <div class="text-[12px] uppercase tracking-[0.18em] text-stone/65">
+              <div>Участник первого потока</div>
+              <div class="mt-1 text-stone/45 normal-case tracking-normal text-[11.5px]">Собственник бизнеса</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- 4 — Левая нижняя средняя -->
+        <figure class="reveal delay-2 group relative overflow-hidden rounded-[24px] border border-ink/10 bg-paper p-7 sm:p-8 lg:col-span-6">
+          <div aria-hidden="true" class="absolute -top-2 left-5 select-none font-display text-[80px] font-light italic leading-none text-ochre/40">“</div>
+          <blockquote class="relative mt-7 text-[16.5px] leading-[1.65] text-stone sm:text-[17.5px] sm:leading-[1.7]">
+            Самый сложный проект, который я&nbsp;делала в&nbsp;своей жизни,&nbsp;— и&nbsp;исключительно про меня. За&nbsp;очень короткий период в&nbsp;этих днях было столько жизни, что это действительно открывает новый горизонт возможностей.
+          </blockquote>
+          <figcaption class="relative mt-6 flex items-center gap-4">
+            <span class="h-px w-8 bg-ochre/60"></span>
+            <div class="text-[12px] uppercase tracking-[0.18em] text-stone/65">
+              <div>Участница первого потока</div>
+              <div class="mt-1 text-stone/45 normal-case tracking-normal text-[11.5px]">Руководитель в&nbsp;банке ТОП-3</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- 5 — Правая нижняя, акцент pine -->
+        <figure class="reveal delay-3 group relative overflow-hidden rounded-[24px] bg-pine p-7 text-paper sm:p-8 lg:col-span-6">
+          <div aria-hidden="true" class="absolute -top-2 left-5 select-none font-display text-[80px] font-light italic leading-none text-gold/45">“</div>
+          <blockquote class="relative mt-7 text-[16.5px] leading-[1.65] text-paper/92 sm:text-[17.5px] sm:leading-[1.7]">
+            В&nbsp;обычном мире ты&nbsp;как муха — миллиард глаз, расфокус. А&nbsp;здесь был только один фокус — на&nbsp;себе, как огромный прожектор. И&nbsp;оказалось, что мы&nbsp;избегаем знакомства с&nbsp;собой настоящим. А&nbsp;это так&nbsp;прекрасно.
+          </blockquote>
+          <figcaption class="relative mt-6 flex items-center gap-4">
+            <span class="h-px w-8 bg-gold/60"></span>
+            <div class="text-[12px] uppercase tracking-[0.18em] text-paper/70">
+              <div>Участница первого потока</div>
+              <div class="mt-1 text-paper/50 normal-case tracking-normal text-[11.5px]">Предприниматель</div>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-cream">
+    <div class="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-28 lg:py-32">
+      <div class="reveal text-center">
+        <span class="eyebrow text-ochre">Вопросы и ответы</span>
+        <h2 class="mt-5 font-display text-[32px] font-light leading-[1.05] tracking-tighter2 text-balance sm:text-[42px] md:text-[52px]">
+          Что обычно спрашивают перед установочным созвоном.
+        </h2>
+      </div>
+
+      <div class="mt-14 space-y-3">
+        <details class="reveal group rounded-[20px] border border-ink/8 bg-paper p-6 transition open:shadow-soft sm:p-7" open>
+          <summary class="flex cursor-pointer items-start justify-between gap-6">
+            <span class="font-display text-[18px] font-light tracking-tightish sm:text-[20px]">Это коучинг, ретрит или терапия?</span>
+            <span class="caret mt-1 text-ochre text-2xl leading-none">+</span>
+          </summary>
+          <p class="mt-5 text-[15px] leading-8 text-stone/90">Авторский интенсив на стыке стратегической фасилитации, групповой трансформационной работы и иммерсивного опыта. Это не терапия в клиническом смысле и не лёгкий ретрит «про расслабиться».</p>
+        </details>
+
+        <details class="reveal delay-1 group rounded-[20px] border border-ink/8 bg-paper p-6 transition open:shadow-soft sm:p-7">
+          <summary class="flex cursor-pointer items-start justify-between gap-6">
+            <span class="font-display text-[18px] font-light tracking-tightish sm:text-[20px]">Когда ближайший поток?</span>
+            <span class="caret mt-1 text-ochre text-2xl leading-none">+</span>
+          </summary>
+          <p class="mt-5 text-[15px] leading-8 text-stone/90">Ближайший поток — 3–6 сентября 2026 года, Геленджик. Группа на 5 человек, состав формируется индивидуально, через установочные созвоны и глубинные сессии. Если этот поток будет уже собран — обсудим следующий.</p>
+        </details>
+
+        <details class="reveal group rounded-[20px] border border-ink/8 bg-paper p-6 transition open:shadow-soft sm:p-7">
+          <summary class="flex cursor-pointer items-start justify-between gap-6">
+            <span class="font-display text-[18px] font-light tracking-tightish sm:text-[20px]">Как проходит отбор?</span>
+            <span class="caret mt-1 text-ochre text-2xl leading-none">+</span>
+          </summary>
+          <p class="mt-5 text-[15px] leading-8 text-stone/90">Пять шагов: установочный созвон (40–50 минут со вторым мастером), индивидуальная глубинная сессия, формирование состава группы, подтверждение от обеих сторон с авансом организационного сбора, подготовка и проведение программы.</p>
+        </details>
+
+        <details class="reveal group rounded-[20px] border border-ink/8 bg-paper p-6 transition open:shadow-soft sm:p-7">
+          <summary class="flex cursor-pointer items-start justify-between gap-6">
+            <span class="font-display text-[18px] font-light tracking-tightish sm:text-[20px]">Сколько стоит участие?</span>
+            <span class="caret mt-1 text-ochre text-2xl leading-none">+</span>
+          </summary>
+          <p class="mt-5 text-[15px] leading-8 text-stone/90">Стоимость обсуждается на установочном созвоне. В организационный сбор входят проживание, 3-разовое питание, вся логистика и три выезда в окрестностях Геленджика, а также работа трёх мастеров. Не входит только дорога до Геленджика и обратно.</p>
+        </details>
+
+        <details class="reveal delay-1 group rounded-[20px] border border-ink/8 bg-paper p-6 transition open:shadow-soft sm:p-7">
+          <summary class="flex cursor-pointer items-start justify-between gap-6">
+            <span class="font-display text-[18px] font-light tracking-tightish sm:text-[20px]">Почему всего 5 участников?</span>
+            <span class="caret mt-1 text-ochre text-2xl leading-none">+</span>
+          </summary>
+          <p class="mt-5 text-[15px] leading-8 text-stone/90">Глубина важнее масштаба. Такой состав позволяет удержать плотность внимания, увидеть каждого и создать сильную среду, в которой группа реально работает как катализатор, а не как шум.</p>
+        </details>
+
+        <details class="reveal group rounded-[20px] border border-ink/8 bg-paper p-6 transition open:shadow-soft sm:p-7">
+          <summary class="flex cursor-pointer items-start justify-between gap-6">
+            <span class="font-display text-[18px] font-light tracking-tightish sm:text-[20px]">Что значит «версионность Я v1 → v2»?</span>
+            <span class="caret mt-1 text-ochre text-2xl leading-none">+</span>
+          </summary>
+          <p class="mt-5 text-[15px] leading-8 text-stone/90">v1 — это инвентаризация: как сейчас устроено, какие ресурсы, цели, риски. Часто этот образ оказывается идеализированным, и это нормально. v2 — пересборка: что выбираю на следующий горизонт, на каких опорах и с какой устойчивостью. Между v1 и v2 — четыре точки явной преемственности, чтобы это была не «новая версия себя», а развитие реальной системы.</p>
+        </details>
+
+        <details class="reveal group rounded-[20px] border border-ink/8 bg-paper p-6 transition open:shadow-soft sm:p-7">
+          <summary class="flex cursor-pointer items-start justify-between gap-6">
+            <span class="font-display text-[18px] font-light tracking-tightish sm:text-[20px]">Подойдёт ли формат, если у меня сейчас нет острого кризиса?</span>
+            <span class="caret mt-1 text-ochre text-2xl leading-none">+</span>
+          </summary>
+          <p class="mt-5 text-[15px] leading-8 text-stone/90">Да. Этот формат особенно ценен не в острой точке, а в зрелости — когда внешне всё «нормально», но вы хотите перейти на более осознанный уровень управления собой и своей жизнью.</p>
+        </details>
+
+        <details class="reveal delay-1 group rounded-[20px] border border-ink/8 bg-paper p-6 transition open:shadow-soft sm:p-7">
+          <summary class="flex cursor-pointer items-start justify-between gap-6">
+            <span class="font-display text-[18px] font-light tracking-tightish sm:text-[20px]">Почему именно Геленджик?</span>
+            <span class="caret mt-1 text-ochre text-2xl leading-none">+</span>
+          </summary>
+          <p class="mt-5 text-[15px] leading-8 text-stone/90">Для этой программы важна не только комфортная среда, но и контраст с повседневностью. Море, рельеф, воздух, смена пространства и выездные точки помогают выйти из автоматических сценариев и увидеть себя шире. Самолётом — около 3,5 часов до аэропорта прямо в Геленджике.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="bg-paper">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-28 lg:py-32">
+      <div class="reveal relative overflow-hidden rounded-[28px] bg-ink p-7 text-paper shadow-soft sm:rounded-[36px] sm:p-12 md:p-16">
+        <div class="grain-light absolute inset-0"></div>
+        <div class="absolute -right-10 -top-12 hidden font-display text-[260px] font-light italic leading-none text-paper/[0.04] sm:block">Я</div>
+
+        <div class="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-14">
+          <div>
+            <span class="eyebrow text-gold">Следующий шаг</span>
+            <h2 class="mt-5 font-display text-[32px] font-light leading-[1.04] tracking-tighter2 text-balance sm:text-[42px] md:text-[52px]">
+              Свяжитесь с нами, чтобы обсудить участие.
+            </h2>
+            <p class="mt-7 max-w-2xl text-[16px] leading-8 text-paper/75 sm:text-[17px] sm:leading-9">
+              Мы общаемся с каждым кандидатом лично. Установочный созвон — первый шаг и для вас, и для нас. Мы знакомимся, проговариваем контекст и решаем, складывается ли совместная работа в принципе.
+            </p>
+            <div class="mt-7 inline-flex items-center gap-3 text-[14px] text-paper/65">
+              <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+              Ближайший поток · 3–6 сентября 2026 · Геленджик
+            </div>
+          </div>
+
+          <div class="rounded-[22px] border border-paper/10 bg-paper/5 p-2 backdrop-blur-md sm:rounded-[26px]">
+            <div class="rounded-[18px] bg-paper p-6 text-ink sm:rounded-[22px] sm:p-7 md:p-8">
+              <div class="font-display text-[20px] font-light tracking-tightish">Выберите удобный способ связи</div>
+              <div class="mt-5 grid gap-3">
+                <a href="https://t.me/TopSlavyanskaya" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-4 rounded-2xl bg-ink px-5 py-4 text-paper transition hover:bg-stone">
+                  <div>
+                    <div class="text-[15px] font-medium">Написать в Telegram</div>
+                    <div class="mt-0.5 text-[12.5px] text-paper/60">Для быстрого первого контакта</div>
+                  </div>
+                  <span class="text-paper/60 transition group-hover:translate-x-0.5 group-hover:text-paper">→</span>
+                </a>
+                <a href="mailto:mike182277@gmail.com?subject=%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%D0%AF%20%E2%80%94%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BD%D0%B0%20%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B9%20%D1%81%D0%BE%D0%B7%D0%B2%D0%BE%D0%BD" class="group flex items-center justify-between gap-4 rounded-2xl border border-ink/15 bg-cream px-5 py-4 text-ink transition hover:border-ink/30">
+                  <div>
+                    <div class="text-[15px] font-medium">Написать на почту</div>
+                    <div class="mt-0.5 text-[12.5px] text-stone/70">Если удобнее сразу описать контекст</div>
+                  </div>
+                  <span class="text-stone/60 transition group-hover:translate-x-0.5 group-hover:text-ink">→</span>
+                </a>
+              </div>
+              <p class="mt-5 text-[13px] leading-6 text-stone/65">Telegram&nbsp;— Олеся, координирует первое знакомство. На&nbsp;установочном созвоне вы&nbsp;общаетесь со&nbsp;вторым мастером.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-ink/8 bg-paper">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 sm:px-8 lg:flex-row lg:items-center lg:justify-between">
+      <div class="flex items-baseline gap-3">
+        <span class="font-display text-2xl italic font-medium tracking-tightish text-ink">Я</span>
+        <span class="text-[13px] text-stone/65">Проект — авторский интенсив для предпринимателей и лидеров</span>
+      </div>
+      <div class="text-[12.5px] text-stone/55">© 2026 · Геленджик · Михаил Качалкин, Олеся Славянская &amp; команда</div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA -->
+  <a id="mobile-sticky-cta" href="#cta" class="mobile-sticky-cta">
+    Установочный созвон <span aria-hidden="true">→</span>
+  </a>
+
+  <script>
+    // Scroll reveal
+    (function() {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function(el){ el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+      els.forEach(function(el){ io.observe(el); });
+    })();
+
+    // Mobile nav overlay
+    (function() {
+      var toggle = document.getElementById('mobile-nav-toggle');
+      var overlay = document.getElementById('mobile-nav');
+      var closeBtn = document.getElementById('mobile-nav-close');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.documentElement.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.documentElement.style.overflow = '';
+      }
+      toggle.addEventListener('click', open);
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      // Close on link tap
+      overlay.querySelectorAll('[data-mobile-link]').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      // Close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+      });
+    })();
+
+    // Mobile sticky CTA visibility — show after first scroll past hero, hide when CTA section visible
+    (function() {
+      var cta = document.getElementById('mobile-sticky-cta');
+      var ctaSection = document.getElementById('cta');
+      if (!cta) return;
+      var heroHeight = 0;
+      var heroEl = document.getElementById('top');
+      if (heroEl) heroHeight = heroEl.offsetHeight;
+      var ctaSectionVisible = false;
+      if (ctaSection && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entries) {
+          ctaSectionVisible = entries[0].isIntersecting;
+          updateVisibility();
+        }, { threshold: 0.05 });
+        io.observe(ctaSection);
+      }
+      function updateVisibility() {
+        var scrolledPastHero = window.scrollY > Math.max(heroHeight - 200, 400);
+        if (scrolledPastHero && !ctaSectionVisible) {
+          cta.classList.add('visible');
+        } else {
+          cta.classList.remove('visible');
+        }
+      }
+      window.addEventListener('scroll', updateVisibility, { passive: true });
+      window.addEventListener('resize', function() {
+        if (heroEl) heroHeight = heroEl.offsetHeight;
+        updateVisibility();
+      });
+      updateVisibility();
+    })();
+  </script>
+</body>
+</html>
