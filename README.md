@@ -4,4 +4,4 @@
 
 Сайт третьего сезона. Два первых сезона прошли в Геленджике, третий — во Вьетнаме.
 
-Сайт: https://mike182277-dot.github.io/project-ya-S3/
+Сайт: https://www.self-project.com/
